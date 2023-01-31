@@ -1,1 +1,0 @@
-near dev-deploy --wasmFile ./target/wasm32-unknown-unknown/release/near_staking_saver.wasm --initArgs '{}' --initFunction new

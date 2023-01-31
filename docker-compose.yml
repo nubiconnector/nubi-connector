@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+    nubi_server_app_prod:
+        container_name: nubi_server_app_prod
+        image: nubi/server/prod:latest
+        ports:
+            - 3001:3001
+    nubi_server_app_stage:
+        container_name: nubi_server_app_stage
+        image: nubi/server/stage:latest
+        ports:
+            - 4001:4001
+    nubi_frontend_app_prod:
+        container_name: nubi_frontend_app_prod
+        image: nubi/frontend/prod:latest
+        ports:
+            - 3000:3000
+    nubi_frontend_app_stage:
+        container_name: nubi_frontend_app_stage
+        image: nubi/frontend/stage:latest
+        ports:
+            - 4000:4000
+    mongodb:
+        container_name: nubi_db
+        image: mongo:latest
+        command: mongod --port 27018
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: 123456
+        ports:
+            - 27018:27018
+        volumes:
+            - mongodb_data:/data/db
+
+volumes:
+    mongodb_data:

@@ -1,3 +1,0 @@
-near call dev-1664622288621-51121232287724 add_staking_record_and_part '{"account_id": "<your_near_account>", "tx_id": "sample_tx.com", "amounts": [1, 20], "validators": ["x", "y"], "amount": 21}' --accountId <your_near_account>
-near call dev-1664622288621-51121232287724 get_total_staking_amount '{}' --accountId <your_near_account>
-near call dev-1664622288621-51121232287724 get_staking_records_for_account '{"account_id": "<your_near_account>"}' --accountId <your_near_account>

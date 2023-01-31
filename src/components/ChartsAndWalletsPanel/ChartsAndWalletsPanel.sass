@@ -1,0 +1,32 @@
+@import '../../assets/sass/colors'
+
+.address-or-name
+    position: relative
+    max-width: 240px
+    overflow-wrap: break-word
+    display: flex !important
+    flex-direction: row
+    line-height: 0 !important
+
+    .form-check-label
+        cursor: pointer
+        transition: 0.5s color
+        position: relative
+        top: 0.72rem
+        &:hover
+            color: $primary-green
+    p
+        font-size: 14px
+        left: 0.2em
+
+.wallet-info__item
+    border-bottom: 1px solid $light-gray
+    padding-top: 1.2em
+    &.total
+        padding-bottom: 1em
+
+.wallets-container
+    overflow: scroll
+
+.wallets-panel__token-name
+    font-size: 12px

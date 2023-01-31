@@ -1,0 +1,28 @@
+.swappable-btn {
+    width: 100%;
+    padding: 0.65em 2em;
+    border-radius: 6px;
+    border: none;
+    animation-name: swappableAnimation;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    transition: 0.2s background-color;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+@keyframes swappableAnimation {
+    5% {
+        background-color: rgb(250, 205, 205);
+    }
+    40% {
+        background-color: rgb(143, 143, 244);
+    }
+    80% {
+        background-color: rgb(37, 182, 129);
+    }
+    95% {
+        background-color: #fff;
+    }
+}

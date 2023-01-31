@@ -1,0 +1,54 @@
+.wallets-changes-progress
+    min-height: 150px
+    position: relative
+    width: 100%
+
+    > .wallets-changes-progress__item
+        background-color: #fff
+        width: 100%
+        height: 50px
+        margin: 2px auto 0
+        position: absolute
+        top: 0
+
+        > div
+            height: 20px
+            width: 100%
+            margin: 4px 0
+            background-color: #f4f2f2
+
+        &:nth-child(1)
+            top: 0
+            animation-name: TileChanges_1
+            animation-duration: 1.5s
+            animation-delay: 0.2s
+
+        &:nth-child(2)
+            top: 52px
+            animation-name: TileChanges_2
+            animation-duration: 1.5s
+            animation-delay: 0.2s
+
+        &:nth-child(3)
+            top: 104px
+            animation-name: TileChanges_3
+            animation-duration: 1.5s
+            animation-delay: 0.2s
+
+@keyframes TileChanges_1
+    0%
+        top: 0
+    90%
+        top: 52px
+
+@keyframes TileChanges_2
+    0%
+        top: 52px
+    90%
+        top: 0
+
+@keyframes TileChanges_3
+    0%
+        top: 0
+    90%
+        top: 104px

@@ -1,0 +1,40 @@
+@import '../../../assets/sass/breakpoints'
+
+.added-date-row
+    display: flex
+
+.slidebar
+    padding-top: 24px
+
+.wallets-panel__tokens
+    margin-bottom: 10px
+    .card
+        border-width: 0
+    &__token-name
+        left: 5px
+    &__token-balance
+        position: relative
+        right: 5px
+        font-weight: 600
+
+@media screen and (min-width: $xl)
+
+@media screen and (min-width: $md) and (max-width: $lg)
+    .added-date-row
+        display: none
+
+@media screen and (min-width: $sm) and (max-width: $md)
+    .added-date-row
+        display: none
+
+@media screen and (min-width: $xs) and (max-width: $sm)
+    .added-date-row
+        display: none
+
+@media screen and (min-width: $xxs) and (max-width: $xs)
+    .added-date-row
+        display: none
+
+@media screen and (max-width: $xxs)
+    .added-date-row
+        display: none

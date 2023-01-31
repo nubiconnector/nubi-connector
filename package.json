@@ -1,0 +1,88 @@
+{
+    "name": "nubi-connector-ui",
+    "version": "0.0.1",
+    "dependencies": {
+        "@near-eth/nep141-erc20": "^2.2.0",
+        "@popperjs/core": "^2.11.6",
+        "@reduxjs/toolkit": "^1.8.6",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.3.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@walletconnect/ethereum-provider": "^1.8.0",
+        "@walletconnect/web3-provider": "^1.8.0",
+        "@web3modal/ethereum": "^2.0.0-alpha.4",
+        "@web3modal/react": "^2.0.0-alpha.4",
+        "body-parser": "^1.20.1",
+        "bootstrap": "^5.2.0",
+        "buffer": "^6.0.3",
+        "crypto-js": "^4.1.1",
+        "dotenv": "^16.0.3",
+        "echarts": "^5.3.3",
+        "echarts-for-react": "^3.0.2",
+        "ethers": "^5.7.1",
+        "express": "^4.18.2",
+        "file-saver": "^2.0.5",
+        "html-to-image": "^1.10.8",
+        "jspdf": "^2.5.1",
+        "moment": "^2.29.4",
+        "mongoose": "^6.7.0",
+        "near-api-js": "~0.44.2",
+        "prettier": "^2.7.1",
+        "rc-json-editor": "^2.0.20",
+        "react": "^18.2.0",
+        "react-csv": "^2.2.2",
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.0.4",
+        "react-router-dom": "^6.3.0",
+        "react-scripts": "5.0.1",
+        "react-toastify": "^9.0.8",
+        "redux": "^4.2.0",
+        "redux-logger": "^3.0.6",
+        "redux-saga": "^1.2.1",
+        "regenerator-runtime": "~0.13.9",
+        "sass": "^1.55.0",
+        "uuid": "^9.0.0",
+        "web3": "^1.8.0",
+        "web3modal": "^1.9.9",
+        "xlsx": "^0.18.5"
+    },
+    "devDependencies": {
+        "@babel/core": "~7.18.2",
+        "@babel/preset-env": "~7.18.2",
+        "@babel/preset-react": "~7.17.12",
+        "ava": "^4.2.0",
+        "env-cmd": "~10.1.0",
+        "near-cli": "~3.3.0",
+        "near-workspaces": "^2.0.0",
+        "nodemon": "^2.0.20",
+        "parcel": "^2.6.0",
+        "process": "^0.11.10",
+        "react-test-renderer": "~18.1.0",
+        "ts-node": "^10.8.0",
+        "typescript": "^4.7.2"
+    },
+    "scripts": {
+        "start": "REACT_APP_BACKEND_HOST=159.69.20.194 REACT_APP_BACKEND_PORT=4001 PORT=4000 react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
