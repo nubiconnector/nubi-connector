@@ -4,11 +4,9 @@ import logo from "../../assets/img/nubi-logo-light.png";
 import "./SlideBar.sass";
 
 function SlideBar() {
-    const [showSidebar, _] = useState(true);
 
     return (
         <>
-            {showSidebar && (
                 <div className="min-vh-100 bg-primary slidebar">
                     <center>
                         <img src={logo} className="slidebar-logo" alt="" />
@@ -22,7 +20,7 @@ function SlideBar() {
                     </center>
                     <ul className="slidebar-menu">
                         <a className="nav-link text-light mb-1" href="/">
-                            <i class="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house"></i>
                             <span className="ms-1 d-none d-md-inline">
                                 {" "}
                                 Home
@@ -50,7 +48,6 @@ function SlideBar() {
                         </a>
                     </ul>
                 </div>
-            )}
         </>
     );
 }

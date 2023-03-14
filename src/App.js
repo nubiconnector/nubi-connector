@@ -7,42 +7,19 @@ import { ToastContainer } from "react-toastify";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 import OpiumDepositPage from "./pages/OpiumDeposit/OpiumDepositPage";
 import SlideBar from "./components/SlideBar/SlideBar";
-
-const useWindowSize = () => {
-    const [windowSize, setWindowSize] = React.useState({
-        width: undefined,
-    });
-    React.useEffect(() => {
-        const handleResize = () => setWindowSize({ width: window.innerWidth });
-        window.addEventListener("resize", handleResize);
-        handleResize();
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
-    return windowSize;
-};
+import NavBar from "./components/SlideBar/NavBar";
 
 function App() {
-    const { width } = useWindowSize();
-    const breakpoint = 767;
 
     return (
         <>
             <div className="container-fluid">
                 <div className="row">
-                    <div
-                        className={`col-${
-                            width > breakpoint ? "2" : "1"
-                        } p-0 position-fixed`}
-                    >
-                        <SlideBar width={width} />
+                    <div className='col-md-2 p-0 position-fixed d-none d-md-block'>
+                        <SlideBar />
                     </div>
-                    <div
-                        className={`col-${
-                            width > breakpoint ? "10" : "11"
-                        } px-4 mt-4 offset-${width > breakpoint ? "2" : "1"}`}
-                    >
+                    <div className='col-md-10 px-4 mt-4 offset-md-2'>
+                        <NavBar/>
                         <Router>
                             <Routes>
                                 <Route

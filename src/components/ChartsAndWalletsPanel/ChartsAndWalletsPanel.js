@@ -3,6 +3,7 @@ import { JsonEditor } from 'rc-json-editor';
 
 import nearLogo from "../../assets/img/near.png";
 import auroraLogo from "../../assets/img/aurora.png";
+import sequence from "../../assets/img/sequence.png";
 import "./ChartsAndWalletsPanel.sass";
 
 import { crossChainNearAurora__Call } from '../../assets/js/near/utils';
@@ -60,13 +61,13 @@ function ChartsAndWalletsPanel() {
 
     return (
         <div>
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <div className="m-0 p-0 col-md-12">
-                        <div className="m-0 p-4 shadow rounded">
-                            <img src={nearLogo} className="bl slidebar-logo d-inline-flex m-0 p-0" alt="" />
-                            <img src={auroraLogo} className="bl slidebar-logo d-inline-flex m-0 p-0" alt="" />
-                            <h3 className="mt-2 mb-4 ">NEAR-AURORA Connector Contract</h3>
+                        <div className="m-0 p-4 shadow rounded word-break">
+                            <img src={nearLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
+                            <img src={auroraLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
+                            <h3 className="mt-2 mb-4 " id="home">NEAR-AURORA Connector Contract</h3>
 
                             <p>A smart contract that facilitates cross-contract communication for Near Dapps or Users with Aurora smart contracts.</p>
 
@@ -78,7 +79,7 @@ function ChartsAndWalletsPanel() {
                             <div className="form-floating mb-1">
                                 <input
                                     type="text"
-                                    className="form-control in bg-success text-white"
+                                    className="form-control mxw-400 bg-success text-white"
                                     id="nearAccountId"
                                     placeholder="mycontract.testnet"
                                     onChange={e => setNearCallParams(prev => ({
@@ -92,7 +93,7 @@ function ChartsAndWalletsPanel() {
                             <div className="form-floating mb-4">
                                 <input
                                     type="text"
-                                    className="form-control in bg-success text-white"
+                                    className="form-control mxw-400 bg-success text-white"
                                     id="nearFCall"
                                     placeholder="getBalanceOf"
                                     onChange={e => setNearCallParams(prev => ({
@@ -134,7 +135,7 @@ function ChartsAndWalletsPanel() {
                                 />
                             </div>
                             <button className="btn btn-primary px-4 mt-4" onClick={lockAuroraCallParameters}>Lock Aurora call parameters</button>
-                            <button className="btn btn-primary px-4 mt-4 mx-4" onClick={submitTestCall}>Test call</button>
+                            <button className="btn btn-primary px-4 mt-4 mx-sm-4" onClick={submitTestCall}>Test call</button>
                             {callData ? <div className="form-floating mt-2">
                                 <span>Actual call</span> <br />
                                 <code>{callData}</code>
@@ -142,10 +143,13 @@ function ChartsAndWalletsPanel() {
                             
 
                             <br />
-                            <h4 className="mt-4">Necessity</h4>
+                            <h4 className="mt-4" id="necessity">Necessity</h4>
                             <p>A classic example is managing Near User's assets (NEP141), bridged using either Rainbow bridge interface or programatically within a Near Dapp, on Aurora (ERC20). Managing the assets requires Near to Aurora cross-contract calls that would trigger either Read-only or Write (state changing) methods of a corresponding ERC20 contract.</p>
 
                             <p>To deal with both type of methods, a proper construction of a cross-contract call combining address of a recipient contract and an input data properly hashing and concatenating called method's name and its input parameters is required. The proposed smart contract eases such cross-contract communication for Near smart contract developers by taking care of properly contructing the calls. Developers are required only to provide an address of an Aurora smart contract, method's name that needs to be called and specify its parameters, while verctorization of the data and serialization into Aurora structs are done by the proposed smart contract.</p>
+
+                            <img src={sequence} className="w-100 mb-2 rounded shadow" alt="Near Aurora bridge contract" />
+                            <p className="text-center text-secondary"><i>Sequence diagram of the NEAR-Aurora contract bridge</i></p>
 
                             <p>To deal with Write (state changing) methods, ownership requirements are a Must for a Near Dapp/User to be able to manage assets on Aurora. Deployment of the proposed smart contract to Near address on Near, owning ERC20 assets on Aurora, would make sure that Near Dapp/User can manage the assets directly from Near smart contract. In this way, developers can focus on Near smart contracts development and manage the assets on Aurora directly and securely, thus eliminating extra steps of using aurora-is-near javascript libraries thereby reducing room for potential errors.</p>
 
@@ -172,7 +176,7 @@ function ChartsAndWalletsPanel() {
                                 - <code>parameters</code> is a list of parameters passed to the <code>function</code></p>
 
                             <br />
-                            <h4 className="mt-4">How to use our solution</h4>
+                            <h4 className="mt-4" id="howToUse">How to use our solution</h4>
 
                             <p>First, one needs to deploy the contract to the Account Id owned:</p>
                             <div className="shadow rounded bg-grey-900 p-4">
@@ -196,7 +200,7 @@ function ChartsAndWalletsPanel() {
 
 
                             <br />
-                            <h4 className="mt-4">Implementation within a NEAR contract</h4>
+                            <h4 className="mt-4" id="implementation">Implementation within a NEAR contract</h4>
 
                             <p>The example before showed the benefits of using this dynamic cross-contract call bridge while using the CLI. But its real benefits come when using it inside a smart contract in NEAR.</p>
 
@@ -223,38 +227,6 @@ function ChartsAndWalletsPanel() {
 
                         </div>
                     </div>
-
-                    {/** Accounts Overview 
-                    <AccountOverview
-                        className="col-md-12"
-                        data={userWallets}
-                        stateArray={checkedStateAccounts}
-                        stateFunction={setCheckedStateAccounts}
-                        loginNear={loginNear}
-                        loginWeb3={selectEthTokens}
-                        logoutNear={logoutNear}
-                        logoutWeb3={logoutWeb3}
-                        ethActiveNetwork={ethActiveNetwork}
-                        currencyRates={priceData}
-                        changesInProgress={changesInProgress}
-                    />*/}
-
-                    {/** Analytics 
-                    <ChartWallets
-                        className="col-md-7"
-                        data={mockedVaults.wallets}
-                        stateArray={checkedState}
-                    />*/}
-
-                    {/** Total stats 
-                    <ChartTotal
-                        className="col-md-5"
-                        data={mockedVaults.wallets}
-                        stateArray={checkedState}
-                    />**/}
-
-                    {/** Reports
-                    <DownloadReport data={MOCKED_WEEK_DATA} />*/}
                 </div>
             </div>
         </div>
