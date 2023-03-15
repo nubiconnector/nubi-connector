@@ -128,9 +128,7 @@ function ChartsAndWalletsPanel() {
                             <h5 className="mt-4 fw-bold">Build Aurora call parameters (JSON format)</h5>
                             <div className="form-floating mb-1 json">                                
                                 <JsonEditor
-                                    data={{
-                                        parameters: {}
-                                    }}
+                                    data={[]}
                                     onChange={e => handleParametersChange(e)}
                                 />
                             </div>
