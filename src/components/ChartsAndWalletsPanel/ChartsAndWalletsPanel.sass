@@ -41,5 +41,45 @@
     word-break: break-all !important
     overflow-wrap: break-word !important
 
+.bg-grey-900    
+    background-color: #f7f7f7 !important
+
+.text-justify
+    text-align: justify
+
 .mxw-400
     max-width:400px
+
+.t7t
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+    font-weight: 700
+    font-style: normal
+    font-size: 10px
+    line-height: 1
+
+
+@media (min-width: 640px)
+    .diagram 
+        max-width: 1000px
+        margin:0 auto
+
+
+@media (max-width: 640px)
+    .json .add, .json .key, .json .type, .json .remove
+        margin-bottom: 1em
+
+@media (max-width: 636px) and (min-width: 553px)
+    .json .remove
+        margin-left: 68px
+    // .json .type
+    //     margin-left: 68px
+
+@media (max-width: 552px) and (min-width: 415px)
+    .json .type
+        margin-left: 68px
+
+@media (max-width: 414px)
+    .json .key, .json .type
+        width: 100%     
+    .json .key, .json .type, .json .remove
+        margin-left: 20px     

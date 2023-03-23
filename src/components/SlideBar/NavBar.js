@@ -28,7 +28,7 @@ function NavBar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item mt-2">
-                            <a className="nav-link active" aria-current="page"  href="/">
+                            <a className="nav-link active" aria-current="page" href="/">
                                 <i className="fa-solid fa-house"></i>{" "}
                                 Home
                             </a>
@@ -41,16 +41,16 @@ function NavBar() {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" aria-current="howToUse" href="#howToUse">
-                            <i className="fa-solid fa-screwdriver-wrench"></i>{" "}
+                                <i className="fa-solid fa-screwdriver-wrench"></i>{" "}
                                 How to use
                             </a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" aria-current="implementation" href="#implementation">
-                            <i className="fa-solid fa-code"></i>{" "}
+                                <i className="fa-solid fa-code"></i>{" "}
                                 Implementation
                             </a>
-                        </li>                        
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link" aria-current="page" href="/opium-deposit">
                                 <i className="fa-solid fa-sack-dollar"></i>{" "}
@@ -62,11 +62,36 @@ function NavBar() {
                                 <i className="fa-solid fa-code-branch"></i>{" "}
                                 GitHub
                             </a>
-                        </li>                                                                        
+                        </li>
+                        <hr className="my-1 p-0"/>
+                        <li className="nav-item">
+                            <span className="t7t text-secondary">Powered by T7T Labs© </span><br/>
+                            <a className="nav-link d-inline-flex" target="_blank" href="mailto:contact@t7tlabs.com">
+                                <i class="fa-regular fa-envelope"></i>
+                            </a>
+                            <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://t.me/t7tlabs">
+                                <i class="fa-brands fa-telegram"></i>
+                            </a>
+                            <a className="nav-link  d-inline-flex" target="_blank" href="https://t7tlabs.com/">
+                                <i class="fa-solid fa-globe"></i>
+                            </a>                            
+                            <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://www.instagram.com/t7tlabs/">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a className="nav-link  d-inline-flex" target="_blank" href="https://twitter.com/t7tlabs">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://www.linkedin.com/company/t7tlabs/">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a className="nav-link  d-inline-flex" target="_blank" href="https://discord.com/channels/966275181502935060/966275181981089794">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 }
 

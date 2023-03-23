@@ -52,8 +52,8 @@ const OpiumDepositPage = () => {
     return (
         <div className="m-0 p-0 col-md-12">
             <div className="m-0 p-4 shadow rounded">
-                <img src={nearLogo} className="bl slidebar-logo d-inline-flex m-0 p-0" alt="" />
-                <img src={auroraLogo} className="bl slidebar-logo d-inline-flex m-0 p-0" alt="" />
+                <img src={nearLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
+                <img src={auroraLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
                 <h3 className="mt-2 mb-4">Deposit example to <code><b>Opium Finance</b></code></h3>
                 <p>Below, you can find an use case example of the Connector smart contract for depositing into <a href="https://app.opium.finance/">Opium.Finance</a> -  from Near Protocol to Aurora blockchain and back (Testnet).</p>
 
@@ -61,7 +61,7 @@ const OpiumDepositPage = () => {
                     <input
                         type="number"
                         placeholder="Deposit amount (NEAR)"
-                        className="form-control in bg-success text-white"
+                        className="form-control mxw-400 mb-2 bg-success text-white"
                         onChange={e => setAmount(e.target.value)}
                         id="in1"
                     />
@@ -72,7 +72,7 @@ const OpiumDepositPage = () => {
                     <input
                         type="text"
                         placeholder="Token approver address (0x..)"
-                        className="form-control in bg-success text-white"
+                        className="form-control mxw-400 mb-2 bg-success text-white"
                         onChange={e => handleChange(e.target.value, 'approverAddr')}
                         id="in2"
                     />
@@ -83,7 +83,7 @@ const OpiumDepositPage = () => {
                     <input
                         type="text"
                         placeholder="Token spender (protocol) address (0x..)"
-                        className="form-control in bg-success text-white"
+                        className="form-control mxw-400 mb-2  bg-success text-white"
                         onChange={e => handleChange(e.target.value, 'spenderAddr')}
                         id="in3"
                     />
@@ -94,7 +94,7 @@ const OpiumDepositPage = () => {
                     <input
                         type="text"
                         placeholder="Near related address (0x..)"
-                        className="form-control in bg-success text-white"
+                        className="form-control mxw-400 mb-2  bg-success text-white"
                         onChange={e => handleChange(e.target.value, 'walletAddr')}
                         id="in4"
                     />

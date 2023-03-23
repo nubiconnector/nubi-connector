@@ -64,7 +64,7 @@ function ChartsAndWalletsPanel() {
             <div className="container-fluid">
                 <div className="row">
                     <div className="m-0 p-0 col-md-12">
-                        <div className="m-0 p-4 shadow rounded word-break">
+                        <div className="m-0 p-4 shadow rounded text-justify">
                             <img src={nearLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
                             <img src={auroraLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
                             <h3 className="mt-2 mb-4 " id="home">NEAR-AURORA Connector Contract</h3>
@@ -129,8 +129,7 @@ function ChartsAndWalletsPanel() {
                             <div className="form-floating mb-1 json">                                
                                 <JsonEditor
                                     data={{
-                                        parameters: {},
-                                        map: (_) => <></>
+                                        parameters: {}
                                     }}
                                     onChange={e => handleParametersChange(e)}
                                 />
@@ -149,26 +148,26 @@ function ChartsAndWalletsPanel() {
 
                             <p>To deal with both type of methods, a proper construction of a cross-contract call combining address of a recipient contract and an input data properly hashing and concatenating called method's name and its input parameters is required. The proposed smart contract eases such cross-contract communication for Near smart contract developers by taking care of properly contructing the calls. Developers are required only to provide an address of an Aurora smart contract, method's name that needs to be called and specify its parameters, while verctorization of the data and serialization into Aurora structs are done by the proposed smart contract.</p>
 
-                            <img src={sequence} className="w-100 mb-2 rounded shadow" alt="Near Aurora bridge contract" />
+                            <img src={sequence} className="w-100 d-flex rounded shadow diagram" alt="Near Aurora bridge contract" />
                             <p className="text-center text-secondary"><i>Sequence diagram of the NEAR-Aurora contract bridge</i></p>
 
                             <p>To deal with Write (state changing) methods, ownership requirements are a Must for a Near Dapp/User to be able to manage assets on Aurora. Deployment of the proposed smart contract to Near address on Near, owning ERC20 assets on Aurora, would make sure that Near Dapp/User can manage the assets directly from Near smart contract. In this way, developers can focus on Near smart contracts development and manage the assets on Aurora directly and securely, thus eliminating extra steps of using aurora-is-near javascript libraries thereby reducing room for potential errors.</p>
 
-                            <p>Example of a Read-only method, checking allowance of <i>"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i>(USN) ERC20 token by an owner <i>"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i> to spender <i>"ffffffffffffffffffffffffffffffffffffffff"</i>:</p>
+                            <p>Example of a Read-only method, checking allowance of <i className="word-break">"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i>(USN) ERC20 token by an owner <i className="word-break">"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i> to spender <i className="word-break">"ffffffffffffffffffffffffffffffffffffffff"</i>:</p>
 
-                            <div className="shadow rounded bg-grey-900 p-4">
-                                <code>near call deployedTo_NearAccountId function_call '&#123;"aurora_contract_address": "A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59", "function": "allowance(address,address)", "parameters": ["6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474","ffffffffffffffffffffffffffffffffffffffff"],"&#125;' --accountId deployedTo_NearAccountId</code>
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
+                                <code>near call deployedTo_NearAccountId function_call '&#123;"aurora_contract_address": <i className="word-break">"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i>, "function": "allowance(address,address)", "parameters": [<i className="word-break">"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i>,<i className="word-break">"ffffffffffffffffffffffffffffffffffffffff"</i>],"&#125;' --accountId deployedTo_NearAccountId</code>
                             </div>
                             <br />
 
-                            <p>Example of a Write (state changing method) method, approving <i>"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i> ERC20 (USN) token owned by owner <i>"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i> to be spend by spender <i>"ffffffffffffffffffffffffffffffffffffffff"</i>:</p>
+                            <p>Example of a Write (state changing method) method, approving <i className="word-break">"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i> ERC20 (USN) token owned by owner <i>"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i> to be spend by spender <i>"ffffffffffffffffffffffffffffffffffffffff"</i>:</p>
 
-                            <div className="shadow rounded bg-grey-900 p-4">
-                                <code>near call deployedTo_NearAccountId function_call '&#123;"aurora_contract_address": "A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59", "function": "approve(address,uint256)", "parameters": ["6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474","1"],"&#125;' --accountId deployedTo_NearAccountId</code>
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
+                                <code>near call deployedTo_NearAccountId function_call '&#123;"aurora_contract_address": <i className="word-break">"A5C7FDbe2a8B814369e89EAed7EE52630fcb4C59"</i>, "function": "approve(address,uint256)", "parameters": [<i className="word-break">"6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474"</i>,"1"],"&#125;' --accountId deployedTo_NearAccountId</code>
                             </div>
                             <br />
 
-                            <p><b>Note:</b> owner's address must be equal to the last 20-bytes of a deployedTo_NearAccountId's keccak hash (e.g., for deployedTo_NearAccountId=account.testnet the last 20-bytes of keccak(account.testnet) is equal to 6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474), otherwise the ownership would not hold true and the cross-contract call would fail.</p>
+                            <p><b>Note:</b> owner's address must be equal to the last 20-bytes of a <code className="word-break">deployedTo_NearAccountId</code>'s keccak hash (e.g., for <code className="word-break">deployedTo_NearAccountId=account.testnet</code> the last 20-bytes of <code>keccak(account.testnet)</code> is equal to <i className="word-break">6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474</i>), otherwise the ownership would not hold true and the cross-contract call would fail.</p>
 
                             <p>Where:<br />
                                 - <code>deployedTo_NearAccountId</code> is an account id to which the smart contract is deployed<br />
@@ -180,19 +179,19 @@ function ChartsAndWalletsPanel() {
                             <h4 className="mt-4" id="howToUse">How to use our solution</h4>
 
                             <p>First, one needs to deploy the contract to the Account Id owned:</p>
-                            <div className="shadow rounded bg-grey-900 p-4">
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
                                 <code>near deploy --wasmFile target/wasm32-unknown-unknown/release/ProxyContract.wasm --accountId deployedTo_NearAccountId</code>
                             </div>
                             <br />
 
                             <p>Initialize the contract:</p>
-                            <div className="shadow rounded bg-grey-900 p-4">
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
                                 <code>near call deployedTo_NearAccountId new '{ }' --accountId deployedTo_NearAccountId</code>
                             </div>
                             <br />
 
                             <p>Make a desired cross-contract call:</p>
-                            <div className="shadow rounded bg-grey-900 p-4">
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
                                 <code>near call deployedTo_NearAccountId function_call '&#123;"function": "function_name(type of parameter 1, type of parameter 2, ...)", "parameters": [parameter 1, parameter 2, ...]&#125;' --accountId deployedTo_NearAccountId</code>
                             </div>
                             <br />
@@ -209,7 +208,7 @@ function ChartsAndWalletsPanel() {
 
                             <p>In contrast, by deploying the proposed contract to owned account id, the person just needs to make a call within the contract as follows:</p>
 
-                            <div className="shadow rounded bg-grey-900 p-4">
+                            <div className="shadow rounded bg-grey-900 p-4 word-break">
                                 <code>function_call("aurora_contract_address", "approve(address,uint256)", &["6eba6ef721bd532ca8e5d5ec8faf7f0fa0dac474","1"]);</code>
                             </div>
                             <br />
@@ -217,13 +216,7 @@ function ChartsAndWalletsPanel() {
                             <p>In contrast, by deploying the proposed contract to owned account id, the person just needs to make a call within the contract as follows:</p>
 
 
-                            <p>More information can be found in the Read.me file of our <a href="https://github.com/T7TLabs/contract-bridge">Github</a>.</p>
-
-                            <br />
-                            <h4 className="mt-4">Next Steps</h4>
-                            <p>- Create a smart contract for secure <b>code</b> solution (DONE)<br />
-                                - Create a APIs / RPC for easy <b>code</b> solution<br />
-                                - Create a frontend for easy  <b>non-code</b> solution</p>
+                            <p>More information can be found in the public <a href="https://drive.google.com/file/d/1B1Qy9XuKl3FYziHLFbbkQ_NfBVUFfOYm/view">.PDF presentation</a> or in our <a href="https://github.com/T7TLabs/contract-bridge">Github</a>.</p>
 
 
                         </div>
