@@ -51,25 +51,25 @@ function SlideBar() {
                     <span className="t7t">Powered by T7T Labs©</span>
                     <div className="mxw-contacts">
                         <a className="nav-link d-inline-flex" target="_blank" href="mailto:contact@t7tlabs.com">
-                            <i class="fa-regular fa-envelope"></i>
+                            <i className="fa-regular fa-envelope"></i>
                         </a>
                         <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://t.me/t7tlabs">
-                            <i class="fa-brands fa-telegram"></i>
+                            <i className="fa-brands fa-telegram"></i>
                         </a>
                         <a className="nav-link  d-inline-flex" target="_blank" href="https://t7tlabs.com/">
-                            <i class="fa-solid fa-globe"></i>
+                            <i className="fa-solid fa-globe"></i>
                         </a>
                         <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://www.instagram.com/t7tlabs/">
-                            <i class="fa-brands fa-instagram"></i>
+                            <i className="fa-brands fa-instagram"></i>
                         </a>
                         <a className="nav-link  d-inline-flex" target="_blank" href="https://twitter.com/t7tlabs">
-                            <i class="fa-brands fa-twitter"></i>
+                            <i className="fa-brands fa-twitter"></i>
                         </a>
                         <a className="nav-link  d-inline-flex mx-2" target="_blank" href="https://www.linkedin.com/company/t7tlabs/">
-                            <i class="fa-brands fa-linkedin"></i>
+                            <i className="fa-brands fa-linkedin"></i>
                         </a>
                         <a className="nav-link  d-inline-flex" target="_blank" href="https://discord.com/channels/966275181502935060/966275181981089794">
-                            <i class="fa-brands fa-discord"></i>
+                            <i className="fa-brands fa-discord"></i>
                         </a>
                     </div>
                 </div>

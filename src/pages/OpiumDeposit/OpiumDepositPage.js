@@ -65,7 +65,7 @@ const OpiumDepositPage = () => {
                         onChange={e => setAmount(e.target.value)}
                         id="in1"
                     />
-                    <label for="in1" className="text-white">Deposit amount (NEAR)</label>
+                    <label htmlFor="in1" className="text-white">Deposit amount (NEAR)</label>
                 </div>
 
                 <div className="form-floating mb-1 ">
@@ -76,7 +76,7 @@ const OpiumDepositPage = () => {
                         onChange={e => handleChange(e.target.value, 'approverAddr')}
                         id="in2"
                     />
-                    <label for="in2" className="text-white">Token approver address (0x..)</label>
+                    <label htmlFor="in2" className="text-white">Token approver address (0x..)</label>
                 </div>
 
                 <div className="form-floating mb-1">
@@ -87,7 +87,7 @@ const OpiumDepositPage = () => {
                         onChange={e => handleChange(e.target.value, 'spenderAddr')}
                         id="in3"
                     />
-                    <label for="in3" className="text-white">Token spender (protocol) address (0x..)</label>
+                    <label htmlFor="in3" className="text-white">Token spender (protocol) address (0x..)</label>
                 </div>
 
                 <div className="form-floating mb-1">
@@ -98,7 +98,7 @@ const OpiumDepositPage = () => {
                         onChange={e => handleChange(e.target.value, 'walletAddr')}
                         id="in4"
                     />
-                    <label for="in4" className="text-white">Near related address (0x..)</label>
+                    <label htmlFor="in4" className="text-white">Near related address (0x..)</label>
                 </div>
 
                 <button

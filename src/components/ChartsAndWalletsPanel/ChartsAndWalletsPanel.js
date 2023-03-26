@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { JsonEditor } from 'rc-json-editor';
+//import { JsonEditor } from 'rc-json-editor';
+import JSONInput from 'react-json-editor-ajrm';
+import locale from 'react-json-editor-ajrm/locale/en';
 
 import nearLogo from "../../assets/img/near.png";
 import auroraLogo from "../../assets/img/aurora.png";
@@ -14,13 +16,21 @@ function ChartsAndWalletsPanel() {
     const [auroraCallParams, setAuroraCallParams] = useState({});
     const [callData, setCallData] = useState(null);
 
-    const handleParametersChange = newParams => {
-        newParams[0].sub_object.forEach(param => {
-            delete param.parent;
-            delete param.sub_object;
-        });
+    let sampleObject = new Object();
 
-        localStorage.setItem('auroraCallParameters', JSON.stringify(newParams[0].sub_object));
+    const handleParametersChange = (AuroraParamsRaw) => {
+        console.log("Aurora object from the JSON editor: ", AuroraParamsRaw); // to delete
+        let AuroraParamsJSON = AuroraParamsRaw.json;
+        console.log(AuroraParamsJSON); // to delete
+
+        localStorage.setItem('auroraCallParameters', JSON.stringify(AuroraParamsJSON)); // please check if this is the correct way to store the JSON object in the local storage
+
+        // newParams[0].sub_object.forEach(param => {
+        //     delete param.parent;
+        //     delete param.sub_object;
+        // });
+
+        //localStorage.setItem('auroraCallParameters', JSON.stringify(newParams[0].sub_object));
     };
 
     const submitTestCall = () => {
@@ -72,8 +82,8 @@ function ChartsAndWalletsPanel() {
                             <p>A smart contract that facilitates cross-contract communication for Near Dapps or Users with Aurora smart contracts.</p>
 
                             <p>To use the Smart Contract, Dapps or Users can simply use 2 methods with input parameters for Aurora calls.</p>
-                            
-                            <br/>
+
+                            <br />
                             <h5 className="fw-bold">Writable <code>near call</code> methods</h5>
 
                             <div className="form-floating mb-1">
@@ -123,13 +133,34 @@ function ChartsAndWalletsPanel() {
                                     }
                                 </div>
                             )}
-                            
+
 
                             <h5 className="mt-4 fw-bold">Build Aurora call parameters (JSON format)</h5>
-                            <div className="form-floating mb-1 json">                                
-                                <JsonEditor
+                            <div className="form-floating mb-1 json-editor rounded shadow">
+                                {/* <JsonEditor
                                     data={{
                                         parameters: {}
+                                    }}
+                                    onChange={e => handleParametersChange(e)}
+                                /> */}
+                                <JSONInput
+                                    id='json-editor'
+                                    placeholder={sampleObject}                                    
+                                    locale={locale}
+                                    height='150px'
+                                    width='100%'
+                                    //theme='light_mitsuketa_tribute'
+                                    //theme='dark_vscode_tribute'                                    
+                                    colors={{
+                                        background:"#71dd37",
+                                        background_warning:"red",
+                                        default:"#fff",
+                                        string:"navy",
+                                        primitive:"navy",
+                                        number:"navy", 
+                                        colon:"navy",                                       
+                                        keys:"#111",
+                                        error:"red"
                                     }}
                                     onChange={e => handleParametersChange(e)}
                                 />
@@ -140,7 +171,7 @@ function ChartsAndWalletsPanel() {
                                 <span>Actual call</span> <br />
                                 <code>{callData}</code>
                             </div> : <br />}
-                            
+
 
                             <br />
                             <h4 className="mt-4" id="necessity">Necessity</h4>
