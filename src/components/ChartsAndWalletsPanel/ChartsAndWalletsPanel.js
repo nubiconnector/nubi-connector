@@ -125,7 +125,7 @@ function ChartsAndWalletsPanel() {
                                                     className="form-control in bg-success text-white"
                                                     id={parametr.key}
                                                     placeholder={parametr.key}
-                                                    onBlur={e => handleAuroraParamChange(e.target.value, parametr.key)}
+                                                    onChange={e => handleAuroraParamChange(e.target.value, parametr.key)}
                                                 />
                                                 <label className="text-white fw-bold" htmlFor={parametr.key}>{parametr.key}</label>
                                             </div>
