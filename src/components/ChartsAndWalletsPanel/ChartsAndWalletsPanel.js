@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { JsonEditor } from 'rc-json-editor';
+//import { JsonEditor } from 'rc-json-editor';
 
 import nearLogo from "../../assets/img/near.png";
 import auroraLogo from "../../assets/img/aurora.png";
@@ -127,12 +127,12 @@ function ChartsAndWalletsPanel() {
 
                             <h5 className="mt-4 fw-bold">Build Aurora call parameters (JSON format)</h5>
                             <div className="form-floating mb-1 json">                                
-                                <JsonEditor
+                                {/* <JsonEditor
                                     data={{
                                         parameters: {}
                                     }}
                                     onChange={e => handleParametersChange(e)}
-                                />
+                                /> */}
                             </div>
                             <button className="btn btn-primary px-4 mt-4" onClick={lockAuroraCallParameters}>Lock Aurora call parameters</button>
                             <button className="btn btn-primary px-4 mt-4 mx-sm-4" onClick={submitTestCall}>Test call</button>
