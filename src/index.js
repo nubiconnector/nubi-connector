@@ -10,6 +10,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "./assets/sass/index.sass";
 import "./assets/sass/colors.css";
 
+// deploy
 // Import Buffer due to the known Webpack v5 issue with Near-js-lib
 // https://github.com/near/near-api-js/issues/757
 // https://github.com/randlabs/myalgo-connect/issues/27
