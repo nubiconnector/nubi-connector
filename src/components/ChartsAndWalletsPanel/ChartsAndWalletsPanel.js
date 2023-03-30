@@ -25,12 +25,29 @@ function ChartsAndWalletsPanel() {
 
         localStorage.setItem('auroraCallParameters', JSON.stringify(AuroraParamsJSON)); // please check if this is the correct way to store the JSON object in the local storage
 
+        //PREVIOUS CODE
         // newParams[0].sub_object.forEach(param => {
         //     delete param.parent;
         //     delete param.sub_object;
         // });
 
         //localStorage.setItem('auroraCallParameters', JSON.stringify(newParams[0].sub_object));
+    };
+
+    const handleNetSelector = () => {
+        const netSelector = document.getElementById("netSelector");
+        const contractInput = document.getElementById("nearAccountId");
+        const net = netSelector.options[netSelector.selectedIndex].value;
+        if (net === "0") {
+            contractInput.value = "deployedTo_NearAccountId";
+            contractInput.disabled = false;
+        } else if (net === "1") {
+            contractInput.value = "nubi-connector-dev.near";
+            contractInput.disabled = true;
+        } else if (net === "2") {
+            contractInput.value = "nubi-connector-dev.testnet";
+            contractInput.disabled = true;
+        }        
     };
 
     const submitTestCall = () => {
@@ -79,12 +96,20 @@ function ChartsAndWalletsPanel() {
                             <img src={auroraLogo} className="bl vendor-logo d-inline-flex m-0 p-0" alt="" />
                             <h3 className="mt-2 mb-4 " id="home">NEAR-AURORA Connector Contract</h3>
 
-                            <p>A smart contract that facilitates cross-contract communication for Near Dapps or Users with Aurora smart contracts.</p>
+                            <p>A smart contract that facilitates cross-contract communication for Near Dapps or Users with Aurora smart contracts. It can be used both on Mainnet and Testnet.</p>
 
                             <p>To use the Smart Contract, Dapps or Users can simply use 2 methods with input parameters for Aurora calls.</p>
 
                             <br />
                             <h5 className="fw-bold">Writable <code>near call</code> methods</h5>
+
+                            <div className="mb-1">
+                                <select className="form-select py-3 mxw-400 bg-success text-white selector fw-bold" id="netSelector" aria-label="Select deployedTo_NearAccountId" onChange={handleNetSelector}>
+                                    <option value="0" defaultValue>Call via your deployed bridge contract</option>
+                                    <option value="1">Use Nubi Mainnet bridge contract</option>
+                                    <option value="2">Use Nubi Testnet bridge contract</option>
+                                </select>
+                            </div>
 
                             <div className="form-floating mb-1">
                                 <input
@@ -125,7 +150,7 @@ function ChartsAndWalletsPanel() {
                                                     className="form-control in bg-success text-white"
                                                     id={parametr.key}
                                                     placeholder={parametr.key}
-                                                    onChange={e => handleAuroraParamChange(e.target.value, parametr.key)}
+                                                    onBlur={e => handleAuroraParamChange(e.target.value, parametr.key)}
                                                 />
                                                 <label className="text-white fw-bold" htmlFor={parametr.key}>{parametr.key}</label>
                                             </div>
@@ -145,22 +170,22 @@ function ChartsAndWalletsPanel() {
                                 /> */}
                                 <JSONInput
                                     id='json-editor'
-                                    placeholder={sampleObject}                                    
+                                    placeholder={sampleObject}
                                     locale={locale}
                                     height='150px'
                                     width='100%'
                                     //theme='light_mitsuketa_tribute'
                                     //theme='dark_vscode_tribute'                                    
                                     colors={{
-                                        background:"#71dd37",
-                                        background_warning:"red",
-                                        default:"#fff",
-                                        string:"navy",
-                                        primitive:"navy",
-                                        number:"navy", 
-                                        colon:"navy",                                       
-                                        keys:"#111",
-                                        error:"red"
+                                        background: "#71dd37",
+                                        background_warning: "red",
+                                        default: "#fff",
+                                        string: "navy",
+                                        primitive: "navy",
+                                        number: "navy",
+                                        colon: "navy",
+                                        keys: "#111",
+                                        error: "red"
                                     }}
                                     onChange={e => handleParametersChange(e)}
                                 />
