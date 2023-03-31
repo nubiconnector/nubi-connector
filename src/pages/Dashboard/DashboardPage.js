@@ -33,9 +33,9 @@ const DashboardPage = () => {
     };
 
     useEffect(() => {
-        getPriceData();
-        getTokensData();
-        requestUserVault();
+        // getPriceData();
+        // getTokensData();
+        // requestUserVault();
     }, []);
 
     return <ChartsAndWalletsPanel />;

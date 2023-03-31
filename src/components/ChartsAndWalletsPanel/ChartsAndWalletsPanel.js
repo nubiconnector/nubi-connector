@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { JsonEditor } from 'rc-json-editor';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 
@@ -12,26 +11,11 @@ import { crossChainNearAurora__Call } from '../../assets/js/near/utils';
 
 function ChartsAndWalletsPanel() {
     const [nearCallParams, setNearCallParams] = useState({});
-    const [auroraCallJSON, setAuroraCallJSON] = useState(null);
-    const [auroraCallParams, setAuroraCallParams] = useState({});
-    const [callData, setCallData] = useState(null);
+    const [auroraCallParams, setAuroraCallParams] = useState(null);
+    const [contractCallDataAsString, setContractCallDataAsString] = useState(null);
 
-    let sampleObject = new Object();
-
-    const handleParametersChange = (AuroraParamsRaw) => {
-        console.log("Aurora object from the JSON editor: ", AuroraParamsRaw); // to delete
-        let AuroraParamsJSON = AuroraParamsRaw.json;
-        console.log(AuroraParamsJSON); // to delete
-
-        localStorage.setItem('auroraCallParameters', JSON.stringify(AuroraParamsJSON)); // please check if this is the correct way to store the JSON object in the local storage
-
-        //PREVIOUS CODE
-        // newParams[0].sub_object.forEach(param => {
-        //     delete param.parent;
-        //     delete param.sub_object;
-        // });
-
-        //localStorage.setItem('auroraCallParameters', JSON.stringify(newParams[0].sub_object));
+    const handleParametersUpdate = ({ json }) => {
+        localStorage.setItem('auroraCallParameters', json);
     };
 
     const handleNetSelector = () => {
@@ -50,41 +34,35 @@ function ChartsAndWalletsPanel() {
         }        
     };
 
-    const submitTestCall = () => {
-        const callAsString =
-            `near call ${nearCallParams.nearDeployedAccount} ${nearCallParams.nearFCall} '${JSON.stringify(auroraCallParams)}'`;
+    const handleLockParameters = () => {
+        const params = JSON.parse(localStorage.getItem('auroraCallParameters'));
 
-        if (
-            nearCallParams.nearFCall &&
-            nearCallParams.nearDeployedAccount &&
-            Object.keys(auroraCallParams).length
-        ) {
-            setCallData(callAsString);
+        if (params.parameters) {
+            setAuroraCallParams(params.parameters);
         }
     };
 
-    const handleAuroraParamChange = (value, name) => {
-        setAuroraCallParams(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+    // Gateway method that do a lock of call data.
+    const handleSetCallDataAsString = () => {
+        if (Object.keys(nearCallParams).length && Object.keys(auroraCallParams).length) {
+            const callAsString =
+                `near call ${nearCallParams.nearDeployedAccount} ${nearCallParams.nearFCall} '${JSON.stringify(auroraCallParams)}'`;
 
-    const lockAuroraCallParameters = () => {
-        setAuroraCallJSON(
-            JSON.parse(localStorage.getItem('auroraCallParameters'))
-        );
+            setContractCallDataAsString(callAsString);
+        }
     };
 
     useEffect(() => {
-        if (callData) {
+        if (contractCallDataAsString) {
+            // Call Bridge contract if all params are setted.
             crossChainNearAurora__Call(
                 nearCallParams.nearDeployedAccount,
                 nearCallParams.nearFCall,
                 auroraCallParams
             );
         }
-    }, [callData]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contractCallDataAsString]);
 
     return (
         <div>
@@ -139,7 +117,7 @@ function ChartsAndWalletsPanel() {
                                 <label htmlFor="nearFCall" className="text-white fw-bold">function_call</label>
                             </div>
 
-                            {auroraCallJSON && (
+                            {/** auroraCallJSON && (
                                 <div className="mb-4">
                                     <h5 className="mb-2 fw-bold">Aurora call parameters</h5>
                                     {
@@ -150,14 +128,14 @@ function ChartsAndWalletsPanel() {
                                                     className="form-control in bg-success text-white"
                                                     id={parametr.key}
                                                     placeholder={parametr.key}
-                                                    onBlur={e => handleAuroraParamChange(e.target.value, parametr.key)}
+                                                    onBlur={e => handleCallBodyParametersUpdate(e.target.value, parametr.key)}
                                                 />
                                                 <label className="text-white fw-bold" htmlFor={parametr.key}>{parametr.key}</label>
                                             </div>
                                         ))
                                     }
                                 </div>
-                            )}
+                                ) **/}
 
 
                             <h5 className="mt-4 fw-bold">Build Aurora call parameters (JSON format)</h5>
@@ -170,7 +148,7 @@ function ChartsAndWalletsPanel() {
                                 /> */}
                                 <JSONInput
                                     id='json-editor'
-                                    placeholder={sampleObject}
+                                    placeholder={{ parameters: {} }}
                                     locale={locale}
                                     height='150px'
                                     width='100%'
@@ -187,14 +165,14 @@ function ChartsAndWalletsPanel() {
                                         keys: "#111",
                                         error: "red"
                                     }}
-                                    onChange={e => handleParametersChange(e)}
+                                    onChange={e => handleParametersUpdate(e)}
                                 />
                             </div>
-                            <button className="btn btn-primary px-4 mt-4" onClick={lockAuroraCallParameters}>Lock Aurora call parameters</button>
-                            <button className="btn btn-primary px-4 mt-4 mx-sm-4" onClick={submitTestCall}>Test call</button>
-                            {callData ? <div className="form-floating mt-2">
+                            <button className="btn btn-primary px-4 mt-4" onClick={handleLockParameters}>Lock call Parameters</button>
+                            <button className="btn btn-primary px-4 mt-4 mx-sm-4" onClick={handleSetCallDataAsString}>Call contract</button>
+                            {contractCallDataAsString ? <div className="form-floating mt-2">
                                 <span>Actual call</span> <br />
-                                <code>{callData}</code>
+                                <code>{contractCallDataAsString}</code>
                             </div> : <br />}
 
 
