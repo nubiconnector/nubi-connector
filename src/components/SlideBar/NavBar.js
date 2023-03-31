@@ -66,7 +66,7 @@ function NavBar() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" target="_blank" href="https://github.com/T7TLabs/contract-bridge">
+                            <a className="nav-link" target="_blank" href="https://github.com/T7TLabs/nubi-connector-contract-bridge">
                                 <i className="fa-solid fa-code-branch"></i>{" "}
                                 GitHub
                             </a>

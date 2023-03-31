@@ -38,7 +38,7 @@ function SlideBar() {
                     </a>
                     <a
                         className="nav-link text-light mb-1"
-                        href="https://github.com/T7TLabs/contract-bridge"
+                        href="https://github.com/T7TLabs/nubi-connector-contract-bridge"
                     >
                         <i className="fa-solid fa-code-branch"></i>
                         <span className="ms-1 d-none d-md-inline">
