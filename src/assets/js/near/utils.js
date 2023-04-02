@@ -393,7 +393,7 @@ export async function crossContractOpiumDeposit(amount, protocol = "testnet") {
     }
 }
 
-export async function crossChainNearAurora__Call(deployedNearAccount, nearFunction, auroraCallArgs) {
+export async function crossChainNearAurora__Call(nearDeployedAccount, nearFunction, auroraCallArgs, onSuccess) {
     await connectNear();
 
     if (auroraCallArgs.uint_) {
@@ -401,10 +401,10 @@ export async function crossChainNearAurora__Call(deployedNearAccount, nearFuncti
     }
 
     if (!window.walletConnection?.isSignedIn()) {
-        await signInContract(deployedNearAccount);
+        await signInContract(nearDeployedAccount);
     } else {
         await initContract(
-            deployedNearAccount,
+           nearDeployedAccount,
             [],
             NearProxyContract_WRITE_METHODS
         );
@@ -412,8 +412,11 @@ export async function crossChainNearAurora__Call(deployedNearAccount, nearFuncti
         try {
             if (window.contract[nearFunction]) {
                 await window.contract[nearFunction](auroraCallArgs);
+
+                onSuccess();
             }
         } catch (err) {
+            onSuccess();
         }
     }
 }

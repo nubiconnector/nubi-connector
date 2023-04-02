@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 
@@ -13,6 +13,7 @@ function ChartsAndWalletsPanel() {
     const [nearCallParams, setNearCallParams] = useState({});
     const [auroraCallParams, setAuroraCallParams] = useState(null);
     const [contractCallDataAsString, setContractCallDataAsString] = useState(null);
+    const [resultMessageData, setResultMessageData] = useState(null);
 
     const handleParametersUpdate = ({ json }) => {
         localStorage.setItem('auroraCallParameters', json);
@@ -22,6 +23,7 @@ function ChartsAndWalletsPanel() {
         const netSelector = document.getElementById("netSelector");
         const contractInput = document.getElementById("nearAccountId");
         const net = netSelector.options[netSelector.selectedIndex].value;
+
         if (net === "0") {
             contractInput.value = "deployedTo_NearAccountId";
             contractInput.disabled = false;
@@ -31,7 +33,12 @@ function ChartsAndWalletsPanel() {
         } else if (net === "2") {
             contractInput.value = "nubi-connector-dev.testnet";
             contractInput.disabled = true;
-        }        
+        }
+        
+        setNearCallParams((prev) => ({
+            ...prev,
+            nearDeployedAccount: contractInput.value,
+        }));
     };
 
     const handleLockParameters = () => {
@@ -49,20 +56,18 @@ function ChartsAndWalletsPanel() {
                 `near call ${nearCallParams.nearDeployedAccount} ${nearCallParams.nearFCall} '${JSON.stringify(auroraCallParams)}'`;
 
             setContractCallDataAsString(callAsString);
-        }
-    };
-
-    useEffect(() => {
-        if (contractCallDataAsString) {
-            // Call Bridge contract if all params are setted.
             crossChainNearAurora__Call(
                 nearCallParams.nearDeployedAccount,
                 nearCallParams.nearFCall,
-                auroraCallParams
+                auroraCallParams,
+                () => {
+                    setContractCallDataAsString(null);
+
+                    setResultMessageData(true);
+                }
             );
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [contractCallDataAsString]);
+    };
 
     return (
         <div>
@@ -174,7 +179,9 @@ function ChartsAndWalletsPanel() {
                                 <span>Actual call</span> <br />
                                 <code>{contractCallDataAsString}</code>
                             </div> : <br />}
-
+                            {resultMessageData ? <div className="form-floating mt-2 success-text">
+                                <span>Transaction successfull!</span> See details in Explorer.<br />
+                            </div> : <br />}
 
                             <br />
                             <h4 className="mt-4" id="necessity">Necessity</h4>
